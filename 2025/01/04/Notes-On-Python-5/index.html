@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Matplotlib&#x5927;&#x91CF;&#x4F7F;&#x7528;numpy&#xFF0C;&#x6240;&#x4EE5;&#x4E24;&#x8005;&#x7ECF;&#x5E38;&#x88AB;&#x4E00;&#x540C;import 12import numpy as npimport matplotlib.pyplot as plt Pyplot &amp;#x66">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Matplotlib">
+<meta property="og:url" content="http://example.com/2025/01/04/Notes-On-Python-5/index.html">
+<meta property="og:site_name" content="Elena&#39;s Blog">
+<meta property="og:description" content="Matplotlib&#x5927;&#x91CF;&#x4F7F;&#x7528;numpy&#xFF0C;&#x6240;&#x4EE5;&#x4E24;&#x8005;&#x7ECF;&#x5E38;&#x88AB;&#x4E00;&#x540C;import 12import numpy as npimport matplotlib.pyplot as plt Pyplot &amp;#x66">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2025/01/04/Notes-On-Python-5/2.png">
+<meta property="og:image" content="http://example.com/2025/01/04/Notes-On-Python-5/image-1.png">
+<meta property="article:published_time" content="2025-01-04T07:18:56.000Z">
+<meta property="article:modified_time" content="2025-01-05T10:56:00.711Z">
+<meta property="article:author" content="ELena Lee">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/01/04/Notes-On-Python-5/2.png">
+
+
+<link rel="canonical" href="http://example.com/2025/01/04/Notes-On-Python-5/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/01/04/Notes-On-Python-5/","path":"2025/01/04/Notes-On-Python-5/","title":"关于Matplotlib"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>关于Matplotlib | Elena's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Elena's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ELena Lee</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/04/Notes-On-Python-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ELena Lee">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elena's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="关于Matplotlib | Elena's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          关于Matplotlib
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-01-04 15:18:56" itemprop="dateCreated datePublished" datetime="2025-01-04T15:18:56+08:00">2025-01-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-01-05 18:56:00" itemprop="dateModified" datetime="2025-01-05T18:56:00+08:00">2025-01-05</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>Matplotlib&#x5927;&#x91CF;&#x4F7F;&#x7528;numpy&#xFF0C;&#x6240;&#x4EE5;&#x4E24;&#x8005;&#x7ECF;&#x5E38;&#x88AB;&#x4E00;&#x540C;import<br>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure><br>
+Pyplot &#x662F; Matplotlib &#x7684;&#x5B50;&#x5E93;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x548C; MATLAB &#x7C7B;&#x4F3C;&#x7684;&#x7ED8;&#x56FE;
+API&#xFF0C;&#x80FD;&#x5F88;&#x65B9;&#x4FBF;&#x8BA9;&#x7528;&#x6237;&#x7ED8;&#x5236; 2D &#x56FE;&#x8868;&#x3002;</p>
+<p>IPython&#xFF08;&#x4ECE;&#x800C;Juypter
+Notebook&#xFF09;&#x6709;&#x4E00;&#x7EC4;&#x9884;&#x5148;&#x5B9A;&#x4E49;&#x597D;&#x7684;&#x6240;&#x8C13;&#x7684;&#x9B54;&#x6CD5;&#x51FD;&#x6570;&#xFF08;Magic
+Functions&#xFF09;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x547D;&#x4EE4;&#x884C;&#x7684;&#x8BED;&#x6CD5;&#x5F62;&#x5F0F;&#x6765;&#x8BBF;&#x95EE;&#x5B83;&#x4EEC;&#xFF0C;&#x4F8B;&#x5982;<code>%matplotlib inline</code>&#x53EF;&#x4EE5;&#x7701;&#x7565;&#x6389;<code>matplotlib.pyplot.show()</code>&#x3002;</p>
+<p>Matplotlib&#x540C;&#x65F6;&#x652F;&#x6301;&#x547D;&#x4EE4;&#x5F0F;&#x7F16;&#x7A0B;&#xFF08;&#x4F5C;&#x7528;&#x4E8E;&#x6700;&#x8FD1;&#x7684;&#x56FE;&#x8868;&#x6216;&#x8F74;&#xFF09;&#x548C;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7F16;&#x7A0B;&#xFF0C;&#x63A8;&#x8350;&#x4F7F;&#x7528;&#x540E;&#x8005;&#x3002;</p>
+<p>Matplotlib&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;Figure&#x5BB9;&#x5668;<br>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">matplotlib</span>.figure.Figure(figsize=<span class="literal">None</span>, dpi=<span class="literal">None</span>, *, facecolor=<span class="literal">None</span>, edgecolor=<span class="literal">None</span>, linewidth=<span class="number">0.0</span>, frameon=<span class="literal">None</span>, subplotpars=<span class="literal">None</span>, tight_layout=<span class="literal">None</span>, constrained_layout=<span class="literal">None</span>, layout=<span class="literal">None</span>, **kwargs)</span><br></pre></td></tr></table></figure></p>
+<p><code>matplotlib.pyplot.figure(num=None, figsize=None, dpi=None, *, facecolor=None, edgecolor=None, frameon=True, FigureClass=&lt;class &apos;matplotlib.figure.Figure&apos;&gt;, clear=False, **kwargs)</code>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;Figure&#x5BF9;&#x8C61;&#x3002;</p>
+<p>num&#x4E3A;int&#x6216;str&#xFF0C;&#x4E3A;&#x56FE;&#x5F62;&#x7684;&#x552F;&#x4E00;&#x6807;&#x8BC6;&#x7B26;&#x3002;figsize&#x662F;(float,
+float)&#x5F62;&#x5F0F;&#x7684;tuple&#xFF0C;&#x8868;&#x793A;&#x5BBD;&#x5EA6;&#x548C;&#x957F;&#x5EA6;&#xFF0C;&#x5355;&#x4F4D;&#x82F1;&#x5BF8;&#xFF0C;&#x9ED8;&#x8BA4;<code>[6.4, 4.8]</code>&#x3002;</p>
+<p>Axes&#x662F;&#x4E00;&#x4E2A;&#x77E9;&#x5F62;&#x533A;&#x57DF;&#xFF0C;&#x8FD9;&#x4E2A;&#x77E9;&#x5F62;&#x662F;&#x57FA;&#x4E8E;figure&#x5750;&#x6807;&#x7CFB;&#x7EDF;&#x5B9A;&#x4E49;&#x7684;&#x3002;Axes&#x4E5F;&#x662F;matplotlib&#x6846;&#x67B6;&#x4E2D;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x7684;&#x7C7B;&#x5BF9;&#x8C61;&#xFF0C;&#x4F46;&#x9996;&#x5148;&#x8981;&#x628A;&#x5B83;&#x7406;&#x89E3;&#x4E3A;figure&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x5B50;&#x77E9;&#x5F62;&#x533A;&#x57DF;&#x3002;</p>
+<p><code>Figure.add_axes(rect, projection=None, polar=False, **kwargs)</code>&#x8FD4;&#x56DE;&#x5411;Figure&#x4E2D;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x8F74;&#x7684;Axes&#x5BF9;&#x8C61;&#x3002;rect&#x4E3A;(left,
+bottom, width, height)&#x5F62;&#x5F0F;&#x5143;&#x7EC4;&#xFF0C;(left,
+bottom)&#x8868;&#x793A;&#x6DFB;&#x52A0;&#x7684;&#x5B50;&#x533A;&#x57DF;&#x5DE6;&#x4E0B;&#x89D2;&#x5750;&#x6807;&#xFF0C;width&#x548C;height&#x4E3A;&#x5B50;&#x533A;&#x57DF;&#x5BBD;&#x5EA6;&#x957F;&#x5EA6;&#xFF0C;&#x5B83;&#x4EEC;&#x90FD;&#x4EE5;&#x5728;Figure&#x5BBD;&#x5EA6;&#x548C;&#x9AD8;&#x5EA6;&#x4E2D;&#x7684;&#x5360;&#x6BD4;&#x8868;&#x793A;&#x3002;</p>
+<p><code>Figure.subplots(nrows=1, ncols=1, *, sharex=False, sharey=False, squeeze=True, width_ratios=None, height_ratios=None, subplot_kw=None, gridspec_kw=None)</code>&#x5411;Figure&#x6DFB;&#x52A0;&#x4E00;&#x7EC4;&#x5B50;&#x56FE;&#xFF0C;&#x5F62;&#x5982;nrows&#xD7;cols&#x7684;&#x77E9;&#x5F62;&#x6392;&#x5E03;&#xFF0C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;figure&#x548C;Axes&#x3002;</p>
+<p>Axes&#x4E2D;&#x6709;&#x8BB8;&#x591A;&#x7ED8;&#x56FE;&#x7684;&#x51FD;&#x6570;&#xFF1A;</p>
+<p><code>plot([x], y, [fmt], *, data=None, **kwargs)</code>&#x6216;<code>plot([x], y, [fmt], [x2], y2, [fmt2], ..., **kwargs)</code>
+&#x7528;&#x4E8E;&#x7528;&#x4E8E;&#x7ED8;&#x5236;&#x7EBF;&#x56FE;&#x548C;&#x6563;&#x70B9;&#x56FE;&#x3002;&#x5411; plot &#x63D0;&#x4F9B;&#x5355;&#x4E2A;&#x5217;&#x8868;&#x6216;&#x6570;&#x7EC4;&#xFF0C;matplotlib
+&#x4F1A;&#x5047;&#x8BBE;&#x5B83;&#x662F;&#x4E00;&#x7CFB;&#x5217; y &#x503C;&#xFF0C;&#x5E76;&#x81EA;&#x52A8;&#x751F;&#x6210; x
+&#x503C;&#x3002;&#x63A5;&#x53D7;&#x4E24;&#x4E2A;&#x6570;&#x7EC4;&#x65F6;&#x5219;&#x4F1A;&#x5C06;&#x524D;&#x8005;&#x4F5C;&#x4E3A;x&#x540E;&#x8005;&#x4F5C;&#x4E3A;y&#x7ED8;&#x56FE;&#x3002;fmt&#x4E3A;string&#x7C7B;&#x578B;&#x53EF;&#x9009;&#x9879;&#xFF0C;&#x53EF;&#x4EE5;&#x6709;color,
+marker, linestyle, linewidth, markersize&#x3002;&#x5177;&#x4F53;&#x7684;&#x529F;&#x7528;&#x5982;&#x4E0B;&#xFF1A;<br>
+Color&#x4E3A;&#x989C;&#x8272;<br>
+| Character | Color |<br>
+|-----------|----------|<br>
+| &apos;b&apos; | Blue |<br>
+| &apos;g&apos; | Green |<br>
+| &apos;r&apos; | Red |<br>
+| &apos;c&apos; | Cyan |<br>
+| &apos;m&apos; | Magenta |<br>
+| &apos;y&apos; | Yellow |<br>
+| &apos;k&apos; | Black |<br>
+| &apos;w&apos; | White |</p>
+<p>marker&#x4E3A;&#x56FE;&#x4E2D;&#x70B9;&#x7684;&#x6807;&#x8BB0;<br>
+| Character | Description |<br>
+|-----------|-----------------|<br>
+| &apos;.&apos; | Point marker |<br>
+| &apos;O&apos; | Circle marker |<br>
+| &apos;x&apos; | X marker |<br>
+| &apos;D&apos; | Diamond marker |<br>
+| &apos;H&apos; | Hexagon marker |<br>
+| &apos;s&apos; | Square marker |<br>
+| &apos;+&apos; | Plus marker |</p>
+<p>linestyle&#x4E3A;&#x76F4;&#x7EBF;&#x5F62;&#x5F0F;<br>
+| Character | Description |<br>
+|-----------|------------------|<br>
+| &apos;-&apos; | Solid line |<br>
+| &apos;--&apos; | Dashed line |<br>
+| &apos;.&apos; | Dash-dot line |<br>
+| &apos;:&apos; | Dotted line |</p>
+<p>&#x5728;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x91CC;&#x5199;<code>ax.plot(drug_conc, response, color=&apos;r&apos;, marker=&apos;o&apos;, linestyle=&apos;-.&apos;)</code>&#x548C;&#x5199;<code>ax.plot(drug_conc, response, &apos;ro-.&apos;)</code>&#x6709;&#x76F8;&#x540C;&#x6548;&#x679C;&#x3002;</p>
+<p>&#x7C7B;&#x4F3C;&#x5730;&#x8FD8;&#x6709;&#xFF1A;</p>
+<p><code>scatter()</code>&#xFF1A;&#x7528;&#x4E8E;&#x7ED8;&#x5236;&#x6563;&#x70B9;&#x56FE;<br>
+<code>bar()</code>/<code>Barh()</code>&#xFF1A;&#x7528;&#x4E8E;&#x7ED8;&#x5236;&#x5782;&#x76F4;/&#x6C34;&#x5E73;&#x6761;&#x5F62;&#x56FE;&#x548C;&#x6C34;&#x5E73;&#x6761;&#x5F62;&#x56FE;<br>
+<code>hist()</code>&#xFF1A;&#x7528;&#x4E8E;&#x7ED8;&#x5236;&#x76F4;&#x65B9;&#x56FE;<br>
+<code>pie()</code>&#xFF1A;&#x7528;&#x4E8E;&#x7ED8;&#x5236;&#x997C;&#x56FE;<br>
+<code>imshow()</code>&#xFF1A;&#x7528;&#x4E8E;&#x7ED8;&#x5236;&#x56FE;&#x50CF;<br>
+&#x4F8B;&#x5982;<br>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">names = [<span class="string">&apos;group_a&apos;</span>, <span class="string">&apos;group_b&apos;</span>, <span class="string">&apos;group_c&apos;</span>]</span><br><span class="line">values = [<span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span>]</span><br><span class="line">plt.figure(figsize=(<span class="number">9</span>, <span class="number">3</span>))</span><br><span class="line">plt.subplot(<span class="number">131</span>)</span><br><span class="line">plt.bar(names, values)</span><br><span class="line">plt.subplot(<span class="number">132</span>)</span><br><span class="line">plt.scatter(names, values)</span><br><span class="line">plt.subplot(<span class="number">133</span>)</span><br><span class="line">plt.plot(names, values)</span><br><span class="line">plt.suptitle(<span class="string">&apos;Categorical Plotting&apos;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure><br>
+&#x4F1A;&#x4EA7;&#x751F;<img src="/2025/01/04/Notes-On-Python-5/2.png"></p>
+<p><code>ax.set_title (label, fontdict=None, loc=None, pad=None, y=None)</code>&#x53EF;&#x4EE5;&#x7ED9;Axes&#x5BF9;&#x8C61;&#x8BBE;&#x7F6E;&#x6807;&#x9898;&#x3002;<code>label</code>&#x662F;string&#xFF0C;&#x7528;&#x4E8E;&#x4F5C;&#x4E3A;&#x6807;&#x9898;&#x7684;&#x6587;&#x672C;&#x3002;<code>fontdict</code>&#x662F;&#x4E00;&#x4E2A;dict&#xFF0C;&#x5305;&#x62EC;&apos;fontsize&#x2019;
+&apos;fontweight&#x2019;,
+&apos;color&#x2019;&#x7B49;&#x63A7;&#x5236;&#x6807;&#x9898;&#x6027;&#x8D28;&#x7684;&#x5173;&#x952E;&#x5B57;&#x3002;<code>loc</code>&#x53EF;&#x4EE5;&#x662F;{&apos;center&apos;, &apos;left&apos;,
+&apos;right&#x2019;}&#x4E2D;&#x4E00;&#x4E2A;&#x3002;y&#x548C;pad&#x90FD;&#x662F;&#x4E3A;&#x6D6E;&#x70B9;&#x6570;&#x3002;<code>y</code>&#x8868;&#x793A;&#x6807;&#x9898;&#x7684;&#x5782;&#x76F4;&#x8F74;&#x4F4D;&#x7F6E;&#xFF08;1.0&#x4E3A;&#x9876;&#x90E8;&#xFF09;&#x3002;&#x5982;&#x679C;None&#xFF08;&#x9ED8;&#x8BA4;&#x503C;&#xFF09;&#xFF0C;&#x5219;&#x81EA;&#x52A8;&#x786E;&#x5B9A;y&#x4EE5;&#x907F;&#x514D;&#x8F74;&#x4E0A;&#x7684;&#x88C5;&#x9970;&#x7B26;&#x3002;<code>pad</code>&#x662F;&#x6807;&#x9898;&#x4E0E;&#x5750;&#x6807;&#x8F74;&#x9876;&#x90E8;&#x7684;&#x504F;&#x79FB;&#x91CF;&#xFF0C;&#x4EE5;&#x70B9;&#x4E3A;&#x5355;&#x4F4D;&#x3002;</p>
+<p><code>ax.set_xlabel(xlabel, fontdict=None, labelpad=None, loc=None)</code>&#x548C;<code>ax.set_ylabel(ylabel, fontdict=None, labelpad=None, loc=None)</code>&#x5206;&#x522B;&#x7528;&#x4E8E;&#x8BBE;&#x7F6E;x&#x8F74;&#x548C;y&#x8F74;&#x7684;&#x6807;&#x7B7E;&#x3002;loc&#x5728;
+{&apos;bottom&apos;, &apos;center&apos;, &apos;top&#x2019;}/{&apos;center&apos;, &apos;left&apos;, &apos;right&#x2019;}&#x4E2D;&#x3002;</p>
+<p><code>ax.set_xticks(ticks)</code>&#x6216;<code>ax.set_yticks(ticks)</code>&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;x/y&#x8F74;&#x7684;&#x523B;&#x5EA6;&#x4F4D;&#x7F6E;&#x3002;ticks&#x4E3A;float&#x7684;list&#xFF0C;&#x5305;&#x62EC;&#x8BF8;&#x523B;&#x5EA6;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p><code>ax.set_xticklabels(labels, fontdict=None)</code>&#x6216;<code>ax.set_yticklabels(labels, fontdict=None)</code>&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;x/y&#x8F74;&#x7684;&#x523B;&#x5EA6;&#x6807;&#x7B7E;&#xFF0C;labels&#x4E3A;string&#x7684;list&#x3002;</p>
+<p><code>ax.set_xlim( left=None, right=None)</code>&#x6216;<code>ax.set_ylim( left=None, right=None)</code>&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;x/y&#x8F74;&#x7684;&#x89C6;&#x56FE;&#x9650;&#x5236;&#x3002;</p>
+<p><code>ax.set_facecolor(color)</code>&#x8BBE;&#x7F6E;&#x56FE;&#x8868;&#x7A7A;&#x767D;&#x7684;&#x989C;&#x8272;&#x3002;</p>
+<p><code>ax.set_frame_on(b)</code>&#x6309;&#x5E03;&#x5C14;&#x503C;b&#x786E;&#x5B9A;&#x662F;&#x5426;&#x8BBE;&#x7F6E;&#x56FE;&#x8868;&#x77E9;&#x5F62;&#x8FB9;&#x6846;&#x3002;</p>
+<p><code>ax.grid(b=None, axis=&apos;both&#x2019;)</code>&#x8BBE;&#x7F6E;&#x7F51;&#x683C;&#x7EBF;&#xFF0C;axis&#x53EF;&#x4EE5;&#x4E3A;{&apos;both&apos;,
+&apos;x&apos;, &apos;y&apos;}&#x4E2D;&#x4E00;&#x4E2A;&#xFF0C;&#x8868;&#x793A;&#x67D0;&#x8F74;&#x662F;&#x5426;&#x8BBE;&#x7F6E;&#x7F51;&#x683C;&#x7EBF;&#x3002;</p>
+<p>Spiness&#x662F;Axes&#x7684;&#x56DB;&#x4E2A;&#x8FB9;&#x6846;&#x7EBF;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;<code>ax.spines[&apos;right&apos;]</code>&#x3001;<code>ax.spines[&apos;left&apos;]</code>&#x3001;<code>ax.spines[&apos;top&apos;]</code>&#x3001;<code>ax.spines[&apos;bottom&apos;]</code>&#x8BBF;&#x95EE;&#x3002;</p>
+<p><code>spine.set_color()</code>&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x989C;&#x8272;&#xFF08;None&#x5219;&#x4E0D;&#x663E;&#x793A;&#xFF09;&#x3002;<code>spine.set_linewidth()</code>&#x8BBE;&#x7F6E;&#x5BBD;&#x5EA6;&#x3002;</p>
+<p><code>ax.legend(labels, loc, fontsize, title, frameon&#x2026;)</code>&#x5728;Axes&#x5BF9;&#x8C61;&#x4E2D;&#x653E;&#x56FE;&#x4F8B;&#x3002;labels&#x662F;str&#x7684;list&#xFF0C;&#x662F;&#x6BCF;&#x6761;&#x7EBF;&#x7684;&#x547D;&#x540D;&#x3002;&#x800C;loc&#x5219;&#x662F;<img src="/2025/01/04/Notes-On-Python-5/image-1.png" alt="alt text"></p>
+<p><code>ax.twinx()</code>&#x6216;<code>ax.twiny()</code>&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;Axes&#xFF0C;&#x5176;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x4E0D;&#x53EF;&#x89C1;&#x7684;x
+/ y&#x8F74;&#x548C;&#x4E00;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;y / x&#x8F74;&#xFF0C;&#x4F4D;&#x4E8E;&#x4E0E;&#x539F;&#x59CB;&#x8F74;&#x76F8;&#x5BF9;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag"># 编程</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/01/04/Notes-On-Python-4/" rel="prev" title="关于Numpy">
+                  <i class="fa fa-angle-left"></i> 关于Numpy
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ELena Lee</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
